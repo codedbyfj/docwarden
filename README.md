@@ -171,10 +171,11 @@ run docwarden
 ```
 
 **First run on a repo with no `AGENTS.md`** → init mode. It analyzes the
-codebase and creates `AGENTS.md` plus only the `docs/*.md` files the
-project actually justifies (see `skills/docwarden/references/init-prompt.md`
-for exactly which files are conditional vs always-created). It ends with
-a summary of what was created and what was skipped, and why.
+codebase and creates `AGENTS.md` plus the full 13-file `docs/*` suite
+(see `skills/docwarden/references/init-prompt.md` for the complete spec —
+OVERVIEW with 21 sections, ARCHITECTURE, FEATURES, API, DATABASE, etc.).
+It ends with a summary of what was created, and any sections marked
+"Requires Product Owner Input".
 
 **Every run after that** → sync mode. It reads your `AGENTS.md`'s own
 doc-update rules, diffs what changed in the repo, updates only the
