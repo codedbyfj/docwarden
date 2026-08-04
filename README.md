@@ -13,11 +13,11 @@ That's what prevents the rules from drifting apart as you edit them.
 | Tool | Adapter | Status |
 |---|---|---|
 | Claude Code | `/docwarden` slash command (plugin) + native `SKILL.md` support | ✅ |
-| Antigravity | `agy plugin install` or `.antigravity/workflows/` | ✅ |
-| OpenCode | `.opencode/command/` + auto-loads `~/.claude/skills/` | ✅ |
-| GitHub Copilot | `.github/prompts/` | ✅ |
-| Cursor | `.cursor/commands/` | ✅ |
-| Codex | plugin marketplace (`.codex-plugin/`) | ✅ |
+| OpenCode | `/docwarden` (`.opencode/command/`) + auto-loads `~/.claude/skills/` | ✅ |
+| GitHub Copilot | `/docwarden` (`.github/prompts/`) | ✅ |
+| Cursor | `/docwarden` (`.cursor/commands/`) | ✅ |
+| Antigravity | `/docwarden` workflow or `agy plugin install` | ✅ |
+| Codex | plugin marketplace (`.codex-plugin/`), skill auto-loads | ✅ |
 | Devin | plugin install (`.devin-plugin/`) | ✅ |
 | Windsurf | not yet added | contributions welcome |
 
@@ -25,12 +25,12 @@ That's what prevents the rules from drifting apart as you edit them.
 doc-sync/
 ├── skills/doc-sync/SKILL.md         ← canonical source of truth. Edit ONLY this.
 ├── adapters/claude-code.md          ← install note (Claude Code reads SKILL.md natively)
-├── .agents/rules/doc-sync.md        ← pointer, for tools reading .agents/rules
-├── .opencode/command/doc-sync.md    ← pointer, OpenCode custom command
-├── .github/prompts/doc-sync.prompt.md ← pointer, Copilot prompt file
-├── .cursor/commands/doc-sync.md     ← pointer, Cursor command
-├── .antigravity/workflows/doc-sync.md ← pointer, Antigravity workflow
 ├── commands/docwarden.md            ← pointer, Claude Code /docwarden slash command
+├── .agents/rules/docwarden.md       ← pointer, Codex / CodeWhale rules (no slash cmd)
+├── .opencode/command/docwarden.md   ← pointer, OpenCode /docwarden command
+├── .github/prompts/docwarden.prompt.md ← pointer, Copilot /docwarden prompt
+├── .cursor/commands/docwarden.md    ← pointer, Cursor /docwarden command
+├── .antigravity/workflows/docwarden.md ← pointer, Antigravity /docwarden workflow
 └── check-adapter-drift.sh           ← run this to confirm no adapter has drifted
 ```
 
@@ -138,8 +138,11 @@ current.
 
 ## How it's triggered
 
-Manual, everywhere. Say or run: **"update the docs"** / **"run doc-sync"**
-in whichever tool you're using. None of these auto-run on commit — that
+Manual, everywhere. Type **`/docwarden`** in tools with a slash-command
+adapter (Claude Code, OpenCode, Copilot, Cursor, Antigravity), or say
+**"update the docs"** / **"run doc-sync"** in any tool — Codex uses the
+phrase since it has no repo-scoped slash commands. None of these auto-run
+on commit — that
 still requires a CI check (see the earlier `docs-check.yml` example) if
 you want true zero-touch enforcement. This package is the on-demand
 repair tool that all your tools share identically; the CI check is the
@@ -147,11 +150,14 @@ guardrail that catches it when nobody runs the repair tool at all.
 
 ## How to Use
 
-**Claude Code (plugin install):** type `/docwarden` — that's it, no
-phrasing to remember.
+**With a slash-command adapter installed** (Claude Code, OpenCode, Copilot,
+Cursor, Antigravity), type `/docwarden` in the chat input — same command
+in every tool, no phrasing to remember. In Codex the skill auto-loads, so
+use the natural-language phrase below instead (Codex has no repo-scoped
+slash commands).
 
-**Everywhere else**, or Claude Code without the plugin, trigger it by
-typing this in chat — same phrase across every supported tool:
+**Everywhere else**, or without the slash command, trigger it by typing
+this in chat:
 ```
 update the docs
 ```
