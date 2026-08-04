@@ -3,12 +3,13 @@
 [![adapter-drift-check](https://github.com/codedbyfj/docwarden/actions/workflows/ci.yml/badge.svg)](https://github.com/codedbyfj/docwarden/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Keeps `docs/*.md` and `CHANGELOG.md` in sync with your codebase, on
-demand, in whichever AI coding tool you use. One skill, one rule set,
-works identically across every AI IDE. Same architecture pattern as
-`ponytail`: a single canonical file is the source of truth, and every
-tool-specific adapter is a thin pointer back to it — never a copy.
-That's what prevents the rules from drifting apart as you edit them.
+Instructs your AI coding agent to create and keep `docs/*.md` and
+`CHANGELOG.md` in sync with your codebase, on demand, in whichever AI
+coding tool you use. One skill, one rule set, works identically across
+every AI IDE. Same architecture pattern as `ponytail`: a single canonical
+file is the source of truth, and every tool-specific adapter is a thin
+pointer back to it — never a copy. That's what prevents the rules from
+drifting apart as you edit them.
 
 | Tool | Adapter | Status |
 |---|---|---|
