@@ -1,0 +1,5 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "docwarden",
+  "description": "Keeps project documentation synced with the codebase via the rules in your repo's AGENTS.md. Bootstraps AGENTS.md and docs/ on a fresh repo, then updates only what recent changes affect."
+}

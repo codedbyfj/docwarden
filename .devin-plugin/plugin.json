@@ -1,0 +1,13 @@
+{
+  "name": "docwarden",
+  "version": "1.0.0",
+  "description": "Keeps project documentation synced with the codebase via the rules in your repo's AGENTS.md. Bootstraps AGENTS.md and docs/ on a fresh repo, then updates only what recent changes affect.",
+  "author": {
+    "name": "codedbyfj",
+    "url": "https://github.com/codedbyfj"
+  },
+  "homepage": "https://github.com/codedbyfj/docwarden",
+  "repository": "https://github.com/codedbyfj/docwarden",
+  "license": "MIT",
+  "keywords": ["documentation", "docs", "agents.md", "changelog", "maintenance"]
+}
