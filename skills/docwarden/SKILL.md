@@ -24,7 +24,7 @@ Check whether `AGENTS.md` exists at the repository root.
 
 - **Missing → Init mode.** Read `references/init-prompt.md` in this
   skill's folder and follow it exactly to analyze the repo and create
-  `AGENTS.md` plus the justified `docs/*.md` files. Do not paraphrase or
+  `AGENTS.md` plus the full 13-file `docs/*` suite. Do not paraphrase or
   reinvent that logic — that file is the canonical initialization
   procedure. Once it completes, stop here for this run; report what was
   created and tell the user to invoke docwarden again after their next
@@ -52,10 +52,9 @@ Check whether `AGENTS.md` exists at the repository root.
 2. Categorize each changed area using the AGENTS.md mapping: new feature,
    API change, schema change, architecture change, UI component change,
    business logic change, deployment change, bug fix.
-3. Build a list of (changed area -> doc file) pairs. Skip areas that map
-   to a doc file that doesn't exist and isn't justified by the project
-   (per the file's own conditional-creation rules, if AGENTS.md defines
-   them) — flag these to the user rather than silently creating new files.
+3. Build a list of (changed area -> doc file) pairs. If the mapping points
+   to a doc file that doesn't exist (e.g. it was deleted since init), flag
+   it to the user rather than silently creating a new file.
 
 ## Step 3 — Update only what's affected
 
