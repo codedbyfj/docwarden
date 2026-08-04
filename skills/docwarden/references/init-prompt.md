@@ -146,6 +146,9 @@ STEP 6 — QUALITY RULES
 ======================================================================
 
 - No placeholders. Every file must be generated from the actual codebase.
+- Use repository-relative paths everywhere (e.g. `src/api.ts`), never
+  absolute paths or `file://` URIs — they leak the author's machine and
+  break for every other user.
 - Preserve any existing good documentation; merge and improve, don't
   discard.
 - Use Markdown, headings, tables where useful, Mermaid diagrams where they

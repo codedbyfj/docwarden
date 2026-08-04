@@ -1,9 +1,9 @@
 ---
-name: doc-sync
-description: Use when the user asks to sync, update, refresh, initialize, or set up project documentation — e.g. "update the docs", "sync docs with latest changes", "run doc-sync", "docs are out of date", "set up docs for this project", "initialize documentation". Handles both first-time setup (no AGENTS.md yet) and ongoing sync against an existing AGENTS.md. Manually triggered, not automatic.
+name: docwarden
+description: Use when the user asks to sync, update, refresh, initialize, or set up project documentation — e.g. "update the docs", "sync docs with latest changes", "run docwarden", "run docwarden", "docs are out of date", "set up docs for this project", "initialize documentation". Handles both first-time setup (no AGENTS.md yet) and ongoing sync against an existing AGENTS.md. Manually triggered, not automatic.
 ---
 
-# doc-sync
+# docwarden
 
 Keep this repository's documentation in sync with its implementation.
 This skill has two modes, chosen automatically based on repository state:
@@ -27,7 +27,7 @@ Check whether `AGENTS.md` exists at the repository root.
   `AGENTS.md` plus the justified `docs/*.md` files. Do not paraphrase or
   reinvent that logic — that file is the canonical initialization
   procedure. Once it completes, stop here for this run; report what was
-  created and tell the user to invoke doc-sync again after their next
+  created and tell the user to invoke docwarden again after their next
   round of changes to keep things updated.
 - **Exists → Sync mode.** Continue to Step 1 below.
 
@@ -71,6 +71,8 @@ Check whether `AGENTS.md` exists at the repository root.
 4. Never fabricate details. If something can't be determined from the
    code (e.g. business rationale), leave the existing text or mark the
    gap explicitly rather than guessing.
+5. Use repository-relative paths (e.g. `src/api.ts`) everywhere you
+   reference files — never absolute paths or `file://` URIs.
 
 ## Step 4 — Report
 
