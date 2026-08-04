@@ -29,7 +29,7 @@ case "$MODE" in
     cp -r "$SCRIPT_DIR/skills" "$TARGET/"
     cp -r "$SCRIPT_DIR/.agents" "$TARGET/" 2>/dev/null || true
     cp -r "$SCRIPT_DIR/.opencode" "$TARGET/" 2>/dev/null || true
-    cp -r "$SCRIPT_DIR/.github/prompts" "$TARGET/.github/" 2>/dev/null || mkdir -p "$TARGET/.github" && cp -r "$SCRIPT_DIR/.github/prompts" "$TARGET/.github/"
+    mkdir -p "$TARGET/.github" && cp -r "$SCRIPT_DIR/.github/prompts" "$TARGET/.github/" 2>/dev/null || true
     cp -r "$SCRIPT_DIR/.cursor" "$TARGET/" 2>/dev/null || true
     cp -r "$SCRIPT_DIR/.antigravity" "$TARGET/" 2>/dev/null || true
     echo "Installed adapters for every supported tool into $TARGET"
