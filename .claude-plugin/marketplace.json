@@ -1,0 +1,16 @@
+{
+  "name": "docwarden",
+  "owner": {
+    "name": "codedbyfj"
+  },
+  "plugins": [
+    {
+      "name": "docwarden",
+      "source": "./",
+      "description": "Keeps docs/*.md, CHANGELOG.md, and AGENTS.md in sync with your codebase. Bootstraps documentation on a fresh repo, then updates only what changed on every later run.",
+      "version": "1.0.0",
+      "category": "documentation",
+      "keywords": ["documentation", "docs", "agents.md", "changelog", "maintenance"]
+    }
+  ]
+}

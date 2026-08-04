@@ -1,0 +1,9 @@
+{
+  "name": "docwarden",
+  "description": "Keeps project documentation synced with the codebase via the rules in your repo's AGENTS.md. Bootstraps AGENTS.md and docs/ on a fresh repo (init mode), and updates only what recent changes affect on every later run (sync mode). Also ships as thin adapters for Antigravity, Copilot, Cursor, OpenCode, and Codex, so every AI tool on the project runs identical rules.",
+  "version": "1.0.0",
+  "author": {
+    "name": "codedbyfj"
+  },
+  "homepage": "https://github.com/codedbyfj/docwarden"
+}
