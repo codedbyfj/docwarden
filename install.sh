@@ -16,9 +16,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 case "$MODE" in
   claude-code)
     mkdir -p "$HOME/.claude/skills"
-    cp -r "$SCRIPT_DIR/skills/doc-sync" "$HOME/.claude/skills/doc-sync"
-    echo "Installed globally to ~/.claude/skills/doc-sync"
-    echo "Trigger with: \"update the docs\" or \"run doc-sync\" in any repo."
+    cp -r "$SCRIPT_DIR/skills/docwarden" "$HOME/.claude/skills/docwarden"
+    echo "Installed globally to ~/.claude/skills/docwarden"
+    echo "Trigger with: \"update the docs\" or \"run docwarden\" in any repo."
     ;;
   project)
     TARGET="${2:-}"
@@ -33,7 +33,7 @@ case "$MODE" in
     cp -r "$SCRIPT_DIR/.cursor" "$TARGET/" 2>/dev/null || true
     cp -r "$SCRIPT_DIR/.antigravity" "$TARGET/" 2>/dev/null || true
     echo "Installed adapters for every supported tool into $TARGET"
-    echo "Trigger with: \"update the docs\" or \"run doc-sync\" in whichever tool you use there."
+    echo "Trigger with: \"update the docs\" or \"run docwarden\" in whichever tool you use there."
     ;;
   *)
     echo "Usage:"

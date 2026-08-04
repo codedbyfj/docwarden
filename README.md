@@ -1,4 +1,4 @@
-﻿# docwarden
+# docwarden
 
 [![adapter-drift-check](https://github.com/codedbyfj/docwarden/actions/workflows/ci.yml/badge.svg)](https://github.com/codedbyfj/docwarden/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -23,8 +23,8 @@ drifting apart as you edit them.
 | Windsurf | not yet added | contributions welcome |
 
 ```
-doc-sync/
-├── skills/doc-sync/SKILL.md         ← canonical source of truth. Edit ONLY this.
+docwarden/
+├── skills/docwarden/SKILL.md         ← canonical source of truth. Edit ONLY this.
 ├── adapters/claude-code.md          ← install note (Claude Code reads SKILL.md natively)
 ├── commands/docwarden.md            ← pointer, Claude Code /docwarden slash command
 ├── .agents/rules/docwarden.md       ← pointer, Codex / CodeWhale rules (no slash cmd)
@@ -38,7 +38,7 @@ doc-sync/
 ## Rule: edit one file, not six
 
 All logic — what to read, how to detect changes, which docs to update,
-how to report back — lives in `skills/doc-sync/SKILL.md` only. Every
+how to report back — lives in `skills/docwarden/SKILL.md` only. Every
 other file just says "go read that file and follow it." If you need to
 change the behavior, change it once, then run:
 
@@ -120,23 +120,23 @@ curl -fsSL https://raw.githubusercontent.com/codedbyfj/docwarden/main/install.sh
 | Codex | `codex plugin remove docwarden` |
 | Devin | `devin plugins remove docwarden` |
 | Antigravity | `agy plugin uninstall docwarden` |
-| Manual global (Claude Code) | `rm -rf ~/.claude/skills/doc-sync` |
-| `install.sh project` | Delete the copied adapters from the target repo (`skills/doc-sync/`, `.agents/`, `.opencode/`, `.github/prompts/`, `.cursor/`, `.antigravity/` entries) |
+| Manual global (Claude Code) | `rm -rf ~/.claude/skills/docwarden` |
+| `install.sh project` | Delete the copied adapters from the target repo (`skills/docwarden/`, `.agents/`, `.opencode/`, `.github/prompts/`, `.cursor/`, `.antigravity/` entries) |
 
 ## Two modes, one skill
 
-`doc-sync` checks the repo itself and picks the right mode — you never
+`docwarden` checks the repo itself and picks the right mode — you never
 choose manually:
 
 - **No `AGENTS.md` yet → init mode.** Runs the full initialization
-  procedure (`skills/doc-sync/references/init-prompt.md`), analyzing the
+  procedure (`skills/docwarden/references/init-prompt.md`), analyzing the
   codebase and creating `AGENTS.md` plus only the `docs/*.md` files the
   project actually justifies.
 - **`AGENTS.md` already exists → sync mode.** Enforces that file's own
   rules, diffs recent changes, and updates only the docs those changes
 affect.
 
-Same trigger phrase for both: "update the docs" / "run doc-sync". First
+Same trigger phrase for both: "update the docs" / "run docwarden". First
 run on a fresh repo bootstraps everything; every run after that keeps it
 current.
 
@@ -144,7 +144,7 @@ current.
 
 Manual, everywhere. Type **`/docwarden`** in tools with a slash-command
 adapter (Claude Code, OpenCode, Copilot, Cursor, Antigravity), or say
-**"update the docs"** / **"run doc-sync"** in any tool — Codex uses the
+**"update the docs"** / **"run docwarden"** in any tool — Codex uses the
 phrase since it has no repo-scoped slash commands. None of these auto-run
 on commit — that
 still requires a CI check (see the earlier `docs-check.yml` example) if
@@ -167,12 +167,12 @@ update the docs
 ```
 or:
 ```
-run doc-sync
+run docwarden
 ```
 
 **First run on a repo with no `AGENTS.md`** → init mode. It analyzes the
 codebase and creates `AGENTS.md` plus only the `docs/*.md` files the
-project actually justifies (see `skills/doc-sync/references/init-prompt.md`
+project actually justifies (see `skills/docwarden/references/init-prompt.md`
 for exactly which files are conditional vs always-created). It ends with
 a summary of what was created and what was skipped, and why.
 
@@ -200,19 +200,19 @@ affected `docs/*.md` files and `CHANGELOG.md`, and reports:
 ```bash
 ./check-adapter-drift.sh
 ```
-Run this after editing anything under `skills/doc-sync/`, or before
+Run this after editing anything under `skills/docwarden/`, or before
 opening a PR — CI runs it automatically on every push.
 
 ## What the skill actually does
 
-See `skills/doc-sync/SKILL.md` for the full logic. Short version: reads
+See `skills/docwarden/SKILL.md` for the full logic. Short version: reads
 this repo's own `AGENTS.md` for its doc-update mapping, diffs recent
 changes, updates only the affected `docs/*.md` files and `CHANGELOG.md`,
 never fabricates content, and reports what it did and skipped.
 
 ## Contributing
 
-See `CONTRIBUTING.md`. The short version: edit `skills/doc-sync/SKILL.md`
+See `CONTRIBUTING.md`. The short version: edit `skills/docwarden/SKILL.md`
 only, run `./check-adapter-drift.sh` before opening a PR, CI enforces it.
 
 ## License
