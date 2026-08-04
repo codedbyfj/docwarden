@@ -39,4 +39,28 @@ else
   echo "Fix the files above so they reference $CANONICAL instead of duplicating rules."
 fi
 
+# The plugin manifests are metadata, not rule pointers, so they can't
+# reference $CANONICAL. Check they still share the canonical description
+# marker instead of letting name/description drift apart over time.
+# ponytail: grep marker beats JSON parsing (no jq dep); a changed marker
+# that keeps the "Bootstraps AGENTS.md" fragment still slips through, fine for metadata.
+MANIFESTS=(
+  "plugin.json"
+  ".claude-plugin/plugin.json"
+  ".codex-plugin/plugin.json"
+  ".devin-plugin/plugin.json"
+)
+
+for f in "${MANIFESTS[@]}"; do
+  if [ ! -f "$f" ]; then
+    echo "MISSING manifest: $f"
+    FAIL=1
+    continue
+  fi
+  if ! grep -q "Bootstraps AGENTS.md" "$f"; then
+    echo "DRIFT: $f no longer matches the canonical plugin description"
+    FAIL=1
+  fi
+done
+
 exit $FAIL

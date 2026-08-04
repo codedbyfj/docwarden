@@ -74,6 +74,11 @@ devin plugins install codedbyfj/docwarden
 agy plugin install https://github.com/codedbyfj/docwarden
 ```
 
+**Tested vs community:** Claude Code is the maintainer-tested path. Codex,
+Devin, and Antigravity installs follow each tool's plugin conventions but
+aren't smoke-tested by the maintainer — if one fails, open an issue rather
+than assuming the format is right.
+
 **OpenCode:** no plugin-install needed. OpenCode auto-loads skills from
 `~/.claude/skills/`, so the Claude Code global install below covers it — or
 run `./install.sh project` to drop in the `.opencode/command/` pointer.
