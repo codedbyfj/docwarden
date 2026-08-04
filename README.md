@@ -50,6 +50,9 @@ having picked up its own copy of the rules.
 
 ## Install
 
+> On Windows, the shell scripts (`install.sh`, `check-adapter-drift.sh`) run
+> via Git Bash, WSL, or MSYS2 — not plain PowerShell.
+
 **Claude Code (recommended) — plugin marketplace, no clone needed:**
 ```
 /plugin marketplace add codedbyfj/docwarden
