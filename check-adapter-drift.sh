@@ -14,11 +14,11 @@ if [ ! -f "$CANONICAL" ]; then
 fi
 
 ADAPTERS=(
-  ".agents/rules/doc-sync.md"
-  ".opencode/command/doc-sync.md"
-  ".github/prompts/doc-sync.prompt.md"
-  ".cursor/commands/doc-sync.md"
-  ".antigravity/workflows/doc-sync.md"
+  ".agents/rules/docwarden.md"
+  ".opencode/command/docwarden.md"
+  ".github/prompts/docwarden.prompt.md"
+  ".cursor/commands/docwarden.md"
+  ".antigravity/workflows/docwarden.md"
   "commands/docwarden.md"
 )
 
