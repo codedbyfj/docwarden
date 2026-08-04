@@ -19,6 +19,7 @@ ADAPTERS=(
   ".github/prompts/doc-sync.prompt.md"
   ".cursor/commands/doc-sync.md"
   ".antigravity/workflows/doc-sync.md"
+  "commands/docwarden.md"
 )
 
 for f in "${ADAPTERS[@]}"; do

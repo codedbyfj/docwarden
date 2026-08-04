@@ -12,7 +12,7 @@ That's what prevents the rules from drifting apart as you edit them.
 
 | Tool | Adapter | Status |
 |---|---|---|
-| Claude Code | plugin marketplace + native `SKILL.md` support | ✅ |
+| Claude Code | `/docwarden` slash command (plugin) + native `SKILL.md` support | ✅ |
 | Antigravity | `agy plugin install` or `.antigravity/workflows/` | ✅ |
 | OpenCode | `.opencode/command/` + auto-loads `~/.claude/skills/` | ✅ |
 | GitHub Copilot | `.github/prompts/` | ✅ |
@@ -30,6 +30,7 @@ doc-sync/
 ├── .github/prompts/doc-sync.prompt.md ← pointer, Copilot prompt file
 ├── .cursor/commands/doc-sync.md     ← pointer, Cursor command
 ├── .antigravity/workflows/doc-sync.md ← pointer, Antigravity workflow
+├── commands/docwarden.md            ← pointer, Claude Code /docwarden slash command
 └── check-adapter-drift.sh           ← run this to confirm no adapter has drifted
 ```
 
@@ -146,8 +147,11 @@ guardrail that catches it when nobody runs the repair tool at all.
 
 ## How to Use
 
-Once installed, trigger it by typing this in chat — same phrase across
-every supported tool:
+**Claude Code (plugin install):** type `/docwarden` — that's it, no
+phrasing to remember.
+
+**Everywhere else**, or Claude Code without the plugin, trigger it by
+typing this in chat — same phrase across every supported tool:
 ```
 update the docs
 ```
